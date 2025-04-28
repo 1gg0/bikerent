@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>BikeFloripa – Aluguel de Bicicletas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      background-color: #666;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.25rem 1rem;
+    }
+    nav a.active {
+      background-color: #ff9800;
+      color: #333;
+      border-radius: 5px;
+    }
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .card h3 {
+      margin: 1rem 0 0.5rem;
+    }
+    .card p {
+      margin: 0.5rem 0 0;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    footer {
+      margin-top: 2rem;
+      padding: 2rem 1rem;
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BikeFloripa</h1>
+    <p>Liberdade na Ilha da Magia</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">Início</a>
+    <a href="agendamento.html">Agendamento</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <main>
+    <h2>Nossas Bicicletas</h2>
+
+    <div class="galeria">
+      <!-- 4 SPECIALIZED NOVAS -->
+      <div class="card">
+        <a href="specialized1.html">
+            <img src="images/specialized1.jpg" alt="Rockhopper 29" />
+          <h3>Rockhopper 29</h3>
+          <p>Leve e resistente, perfeita para trilhas com suspensão SR Suntour XCE 29 e componentes microSHIFT.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="specialized2.html">
+          <img src="images/specialized2.jpg" alt="Bicicleta P.2">
+          <h3>Bicicleta P.2</h3>
+          <p>Single-speed ou cassete, quadro Premium Alloy e freios Sram Level T para máxima performance urbana.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="specialized3.html">
+          <img src="images/specialized3.jpg" alt="P.1">
+          <h3>P.1</h3>
+          <p>Compacta e ágil, geometria street-friendly e freios a disco mecânicos para aventura urbana.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="specialized4.html">
+          <img src="images/specialized4.jpg" alt="Allez Sport">
+          <h3>Allez Sport</h3>
+          <p>Speed &amp; comfort: quadro FACT full carbon e grupo Shimano Tiagra de 10 velocidades.</p>
+        </a>
+      </div>
+
+      <!-- 4 CALOI ORIGINAIS -->
+      <div class="card">
+        <a href="bike1.html">
+          <img src="images/caloi1.jpg" alt="Caloi Elite FS">
+          <h3>Caloi Elite FS</h3>
+          <p>Full Suspension, alumínio 6061 e suspensão traseira RockShox SID Luxe.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="bike2.html">
+          <img src="images/caloi2.jpg" alt="Caloi Supra 21V">
+          <h3>Caloi Supra 21V</h3>
+          <p>Versátil para cidade ou trilha leve, quadro alumínio 6061 e freios a disco mecânicos.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="bike3.html">
+          <img src="images/caloi3.jpg" alt="Caloi Carbon XC Race">
+          <h3>Caloi Carbon XC Race</h3>
+          <p>Performance em carbono, componentes Shimano SLX e pneus Vittoria XC Race tubeless.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="bike4.html">
+          <img src="images/caloi4.jpg" alt="Caloi Explorer Comp">
+          <h3>Caloi Explorer Comp</h3>
+          <p>Explorer esportiva, ideal para longas jornadas, alumínio 6061 e freios hidráulicos Logan.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <h2>Pronto para pedalar com liberdade?</h2>
+    <p>Explore Florianópolis com nossas bicicletas de alta performance.</p>
+    <p>© 2025 BikeFloripa. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

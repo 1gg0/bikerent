@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Rockhopper 29 – BikeFloripa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #e0e0e0; margin: 0; padding: 0; color: #333; }
+    header, footer { background: #333; color: white; text-align: center; padding: 1rem; }
+    nav { background: #666; display: flex; justify-content: center; padding: .5rem 0; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: bold; padding: .25rem 1rem; }
+    nav a.active { background: #ff9800; color: #333; border-radius:5px; }
+    main { max-width: 960px; margin: 2rem auto; background: white; padding: 2rem; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    .bike-header { display:flex; flex-direction: column; align-items: center; gap:1rem; }
+    .bike-header img { max-width:100%; border-radius:8px; }
+    .bike-header h2 { margin:0; }
+    .descricao { font-style: italic; color:#555; text-align: center; max-width:800px; }
+    .specs { margin-top:2rem; }
+    .specs h3 { border-bottom:2px solid #333; padding-bottom:.5rem; }
+    .specs ul { list-style: none; padding:0; }
+    .specs li { margin-bottom:.5rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BikeFloripa</h1>
+    <p>Liberdade na Ilha da Magia</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="agendamento.html">Agendamento</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="bike1.html">Caloi 1</a>
+    <a href="specialized1.html" class="active">Rockhopper 29</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <main>
+    <div class="bike-header">
+      <img src="images/specialized1.jpg" alt="Rockhopper 29">
+      <h2>Rockhopper 29</h2>
+      <p class="descricao">
+        Leve e resistente, com quadro em alumínio A1 premium e suspensão SR Suntour XCE 29 de até 100 mm.
+      </p>
+    </div>
+
+    <div class="specs">
+      <h3>Especificações Técnicas</h3>
+      <ul>
+        <li><strong>Quadro:</strong> A1 premium butted alloy, cabeamento interno, dropper-post compatible.</li>
+        <li><strong>Suspensão:</strong> SR Suntour XCE 29, 100 mm, coil spring.</li>
+        <li><strong>Freios:</strong> Radius CX7 mecânico a disco 160 mm (dianteiro e traseiro).</li>
+        <li><strong>Transmissão:</strong> microSHIFT 2×8 (cassete SunRace 11–34 T, corrente KMC X8).</li>
+        <li><strong>Rodas:</strong> Specialized double-wall 32 f., pneus Fast Trak 29×2.35 tubeless ready.</li>
+        <li><strong>Cockpit:</strong> mesa Stout 6° rise, guidão 9° backsweep, manoplas lock-on.</li>
+        <li><strong>Acessórios:</strong> pedais SBC-54 flat, abraçadeira 34.9 mm.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BikeFloripa. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

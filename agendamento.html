@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendamento - BikeFloripa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #e0e0e0; margin: 0; padding: 0; color: #333; }
+    header, footer { background: #333; color: white; text-align: center; padding: 1rem; }
+    nav { background: #666; display: flex; justify-content: center; padding: 0.5rem 0; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: bold; padding: 0.25rem 1rem; font-size: 1rem; }
+    nav a.active { background: #ff9800; color: #333; border-radius: 5px; }
+    main { max-width: 960px; margin: 2rem auto; background: white; padding: 3rem 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    form { display: flex; flex-direction: column; gap: 1.5rem; }
+    label { font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    input[type="submit"] { background-color: #ff9800; color: white; border: none; font-size: 1.1rem; border-radius: 5px; cursor: pointer; }
+    input[type="submit"]:hover { background-color: #e68a00; }
+    .adicionar-btn { width: 40%; margin: 0 auto; display: block; background: #e0e0e0; color: #333; border: none; padding: 10px; font-size: 1.2rem; border-radius: 10px; cursor: pointer; }
+    .adicionar-btn:hover { background: #999; color: #e0e0e0; }
+    .bicicleta-container { position: relative; }
+    .remover-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #ccc; color: #333; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; }
+    .remover-btn:hover { background: #999; color: white; }
+    #mensagem { text-align: center; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>BikeFloripa</h1>
+  <p>Liberdade na Ilha da Magia</p>
+</header>
+
+<nav>
+  <a href="index.html">Início</a>
+  <a href="agendamento.html" class="active">Agendamento</a>
+  <a href="eventos.html">Eventos</a>
+  <a href="contato.html">Contato</a>
+</nav>
+
+
+<main>
+  <h2 style="text-align:center;">Agende sua Bicicleta</h2>
+
+  <p style="text-align:center; font-style:italic; color: #555;">
+    O orçamento será enviado automaticamente por e-mail após preencher o agendamento.
+  </p>
+
+  <form id="form-agendamento">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+    </div>
+
+    <div>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div id="bicicletas">
+      <div class="bicicleta-container">
+        <label>Bicicleta:</label>
+          <select name="bicicleta">
+            <!-- 4 Specialized novas -->
+            <option value="Rockhopper 29">Rockhopper 29</option>
+            <option value="Bicicleta P.2">Bicicleta P.2</option>
+            <option value="P.1">P.1</option>
+            <option value="Allez Sport">Allez Sport</option>
+            <!-- 4 Caloi originais -->
+            <option value="Caloi Elite FS">Caloi Elite FS</option>
+            <option value="Caloi Supra">Caloi Supra</option>
+            <option value="Caloi Carbon XC Race">Caloi Carbon XC Race</option>
+            <option value="Caloi Explorer Comp">Caloi Explorer Comp</option>
+          </select>
+          
+        <button type="button" class="remover-btn" onclick="removerBicicleta(this)">x</button>
+      </div>
+    </div>
+
+    <button type="button" class="adicionar-btn" onclick="adicionarBicicleta()">+ Adicionar Bicicleta</button>
+
+    <div>
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" required>
+    </div>
+
+    <div>
+      <label for="horario_inicio">Horário de Início:</label>
+      <input type="time" id="horario_inicio" name="horario_inicio" required>
+    </div>
+
+    <div>
+      <label for="duracao">Plano de Aluguel:</label>
+      <select id="duracao" name="duracao" required>
+        <option value="Diária">Diária</option>
+        <option value="Semanal">Semanal</option>
+        <option value="Mensalidade">Mensalidade</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="observacoes">Observações:</label>
+      <textarea id="observacoes" name="observacoes"></textarea>
+    </div>
+
+    <input type="submit" value="Agendar">
+  </form>
+
+  <p id="mensagem"></p>
+</main>
+
+<footer>
+  <h2>Pronto para pedalar com liberdade?</h2>
+  <p>Explore Florianópolis com nossas bicicletas de alta performance.</p>
+  <p>&copy; 2025 BikeFloripa. Todos os direitos reservados.</p>
+</footer>
+
+<!-- 1) Lib EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+// 2) Inicializa EmailJS
+emailjs.init("wE7JxyzdfEHmVM7M9");
+
+document.getElementById('form-agendamento').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('mensagem');
+  msg.style.color = '#888';
+  msg.textContent = 'Enviando agendamento...';
+
+  // Campos fixos
+  const params = {
+    nome:           this.nome.value,
+    email:          this.email.value,
+    data:           this.data.value,
+    horario_inicio: this.horario_inicio.value,
+    duracao:        this.duracao.value,
+    observacoes:    this.observacoes.value
+  };
+
+  // Campos dinâmicos de bicicleta
+  this.querySelectorAll('select[name="bicicleta"]').forEach((sel,i) => {
+    params[`bicicleta_${i+1}`] = sel.value;
+  });
+
+  // 3) Envia e-mail
+  emailjs.send('service_bikefloripa', 'template_agendamento', params)
+    .then(function() {
+      // 4) Em caso de sucesso, grava no SheetDB
+      fetch('https://sheetdb.io/api/v1/y6nmrlr4yqdxl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json','Accept':'application/json' },
+        body: JSON.stringify({ data: params })
+      })
+      .then(async res => {
+        console.log('SheetDB status:', res.status, res.statusText);
+        console.log('SheetDB body  :', await res.text());
+      })
+      .catch(err => console.error('Erro SheetDB:', err));
+
+      // 5) Feedback e reset
+      msg.style.color = 'green';
+      msg.textContent = 'Agendamento enviado com sucesso!';
+      e.target.reset();
+      document.getElementById('bicicletas').innerHTML = `
+        <div class="bicicleta-container">
+          <label>Bicicleta:</label>
+          <select name="bicicleta">
+            <option value="Caloi Elite FS">Caloi Elite FS</option>
+            <option value="Caloi Supra">Caloi Supra</option>
+            <option value="Caloi Carbon XC Race">Caloi Carbon XC Race</option>
+            <option value="Caloi Explorer Comp">Caloi Explorer Comp</option>
+          </select>
+          <button type="button" class="remover-btn" onclick="removerBicicleta(this)">x</button>
+        </div>`;
+    })
+    .catch(function() {
+      msg.style.color = 'red';
+      msg.textContent = 'Erro ao enviar agendamento. Tente novamente.';
+    });
+});
+
+// Funções de adicionar/remover bicicleta
+function adicionarBicicleta() {
+  const container = document.getElementById('bicicletas');
+  const div = document.createElement('div');
+  div.className = "bicicleta-container";
+  div.innerHTML = `
+    <label>Bicicleta:</label>
+    <select name="bicicleta">
+      <option value="Rockhopper 29">Rockhopper 29</option>
+      <option value="Bicicleta P.2">Bicicleta P.2</option>
+      <option value="P.1">P.1</option>
+      <option value="Allez Sport">Allez Sport</option>
+      <option value="Caloi Elite FS">Caloi Elite FS</option>
+      <option value="Caloi Supra">Caloi Supra</option>
+      <option value="Caloi Carbon XC Race">Caloi Carbon XC Race</option>
+      <option value="Caloi Explorer Comp">Caloi Explorer Comp</option>
+    </select>
+    <button type="button" class="remover-btn" onclick="removerBicicleta(this)">x</button>
+  `;
+  container.appendChild(div);
+}
+
+function removerBicicleta(btn) {
+  btn.parentElement.remove();
+}
+</script>
+
+</body>
+</html>
